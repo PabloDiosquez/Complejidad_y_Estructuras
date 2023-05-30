@@ -34,11 +34,14 @@ namespace Clase_01
             // HIjos del árbol 3
 
             hijo3.agregarHijo(new ArbolGeneral<int>(-100));
-            
+
             // Recorriendo el árbol 🌳
 
+            Console.WriteLine("Recorrido PreOrden:");
             raiz.recorridoPreOrden();
 
+            Console.WriteLine("\nRecorrido PostOrden:");
+            raiz.recorridoPostOrden();
         }
     }
 }
