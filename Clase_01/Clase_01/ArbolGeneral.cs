@@ -75,7 +75,9 @@ namespace Clase_01
 
 
         /// <summary>
-        /// Describe la altura del árbol, es decir, la longitud del camino más largo desde el nodo raíz hasta una hoja. 
+        /// Describe la altura del árbol, es decir, la longitud del camino más largo desde el nodo raíz hasta una hoja.
+        /// Precondición: 
+        /// *El árbol no debe ser vacío.
         /// </summary>
         /// <returns>int</returns>
         public int altura()
@@ -98,7 +100,39 @@ namespace Clase_01
             }
 
             return alturaMaxima + 1;
+        }
 
+        //Ejercicio 4b
+        //Pista: Si el nodo raíz posee el mismo dato que pasado como parámetro, se retorna 0. En caso contrario, se debe buscar en
+        //cuales de los subárboles hijos se encuentra el dato(implemente el mensaje include (Object dato) en la clase Arbol General)
+        //y se debe retornar 1 más el nivel que arroje enviar el mensaje nivel() al subárbol que incluye el dato.
+
+        /// <summary>
+        /// Describe la profundidad o nivel del dato en el árbol. El nivel de un nodo es la longitud del único camino de la raíz al nodo.
+        /// </summary>
+        /// <param name="dato">El dato según el cual se describe el nivel - Tipo: T</param>
+        /// <returns>int</returns>
+        public int nivel(T dato)
+        {
+            return 0;
+        }
+
+        public void recorridoPreOrden() 
+        {
+            // Primero proceso la ráiz
+            if (!estaVacio())
+            {
+                Console.Write($"{getDatoRaiz()} ");
+            }
+
+            // Después proceso los hijos
+            if (!esHoja()) // ¿Tiene hijos?
+            {
+                foreach (ArbolGeneral<T> hijo in getHijos())
+                {
+                    hijo.recorridoPreOrden();
+                }
+            }
         }
     }
 }
