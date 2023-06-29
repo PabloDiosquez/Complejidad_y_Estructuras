@@ -42,6 +42,23 @@ namespace Clase_01
             return (i < arr.Length - 1) ? i : -1;
         }
 
+        // Implementación recursiva ☂
+
+        public static int busquedaSecuencialV3(int[] numeros, int llave)
+        {
+            return busquedaSecuencialDesde(numeros, llave, 0);
+        }
+
+        private static int busquedaSecuencialDesde(int[] numeros, int llave, int desde)
+        {
+            if (desde == numeros.Length)
+            {
+                return -1;
+            }
+
+            return (numeros[desde] == llave) ? desde : busquedaSecuencialDesde(numeros, llave, desde++);
+        }
+
         // Binary search works on a sorted array. The value is compared with the middle element of the array.
         // If equality is not found, then the half part is eliminated in which the value is not there.
         // In the same way, the other half part is searched
