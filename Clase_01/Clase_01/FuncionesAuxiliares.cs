@@ -20,5 +20,18 @@ namespace Clase_01
 
             return numero2;
         }
+
+        /// <summary>
+        /// Describe el número más chico entre los dos números enteros dados.
+        /// </summary>
+        /// <param name="numero1">Número entero</param>
+        /// <param name="numero2">Número entero</param>
+        /// <returns>Número entero</returns>
+        public static int minimoEntre(int numero1, int numero2)
+        {
+            if (numero1 <= numero2) return numero1;
+
+            return numero2;
+        }
     }
 }

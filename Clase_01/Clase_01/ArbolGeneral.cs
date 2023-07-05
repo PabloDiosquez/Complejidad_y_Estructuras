@@ -107,18 +107,56 @@ namespace Clase_01
         //y se debe retornar 1 más el nivel que arroje enviar el mensaje nivel() al subárbol que incluye el dato.
 
         /// <summary>
-        /// Describe la profundidad o nivel del dato en el árbol. El nivel de un nodo es la longitud del único camino de la raíz al nodo.
+        /// Describe la profundidad o nivel del dato en el árbol. El nivel de un nodo es la longitud del único camino de la raíz
+        /// al nodo.
+        /// Precondición:
+        /// * El dato debe estar en el árbol.
         /// </summary>
         /// <param name="dato">El dato según el cual se describe el nivel - Tipo: T</param>
         /// <returns>int</returns>
         public int nivel(T dato)
         {
+            //if (getDatoRaiz() == dato) return 0;
+
+            //List<ArbolGeneral<T>> hijos = getHijos();
+
+            //while (!incluido(dato, hijos.actual())) ➡ Uso de la precondición.
+            //{
+            //    hijos.Remove(hijos.actual());
+            //}
+
+            //return hijos.actual().nivel(dato) + 1;
+
             return 0;
+        }
+
+        /// <summary>
+        /// Indica si el dato dado está incluido en el árbol dado.
+        /// </summary>
+        /// <param name="dato">Dato según el cual se describe si está incluido o no</param>
+        /// <param name="arbol">Árbol</param>
+        /// <returns>Bool</returns>
+        private bool incluido(T dato, ArbolGeneral<T> arbol) 
+        {
+            //if (arbol == null) return false;
+
+            //if (arbol.getDatoRaiz() == dato) return true;
+
+            //List<ArbolGeneral<T>> hijos = getHijos();
+
+            //while (hijos.Count > 0 && !hijos.actual().incluido(dato))
+            //{
+            //    hijos.RemoveAt(0);
+            //}
+
+            //return hijos.Count > 0;
+
+            return true;
         }
 
         public void recorridoPreOrden() 
         {
-            // Primero proceso la ráiz
+            // Primero proceso la raíz
             if (!estaVacio())
             {
                 Console.Write($"{getDatoRaiz()} ");
