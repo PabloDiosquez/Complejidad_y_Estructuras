@@ -96,16 +96,9 @@ namespace Clase_01
                 //    alturaMaximaAlMomento = hijo.altura();
                 //}
 
-                alturaMaximaAlMomento = maximoEntre(alturaMaximaAlMomento, hijo.altura());
+                alturaMaximaAlMomento = FuncionesAuxiliares.maximoEntre(alturaMaximaAlMomento, hijo.altura());
             }
             return alturaMaximaAlMomento + 1;
-        }
-
-        private int maximoEntre(int numero1, int numero2)
-        {
-            if (numero1 >= numero2) return numero1;
-
-            return numero2;
         }
 
         //Ejercicio 4b
