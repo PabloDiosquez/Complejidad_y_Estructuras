@@ -13,8 +13,7 @@ namespace Clase_01
     {
         private NodoGeneral<T> raiz;
 
-        // Constructores 
-
+        // Constructores
         public ArbolGeneral(T datoRaiz)
         {
             raiz = new NodoGeneral<T>(datoRaiz);
@@ -82,24 +81,31 @@ namespace Clase_01
         /// <returns>int</returns>
         public int altura()
         {
-            if (esHoja())
-                return 0;
+            if (esHoja()) return 0;
 
             List<ArbolGeneral<T>> hijos = getHijos();
 
-            int alturaMaxima = hijos[0].altura();
+            int alturaMaximaAlMomento = hijos[0].altura();
 
             hijos.RemoveAt(0);
 
             foreach (ArbolGeneral<T> hijo in hijos)
             {
-                if (hijo.altura() > alturaMaxima)
-                {
-                    alturaMaxima = hijo.altura();
-                }
-            }
+                //if (hijo.altura() > alturaMaximaAlMomento)
+                //{
+                //    alturaMaximaAlMomento = hijo.altura();
+                //}
 
-            return alturaMaxima + 1;
+                alturaMaximaAlMomento = maximoEntre(alturaMaximaAlMomento, hijo.altura());
+            }
+            return alturaMaximaAlMomento + 1;
+        }
+
+        private int maximoEntre(int numero1, int numero2)
+        {
+            if (numero1 >= numero2) return numero1;
+
+            return numero2;
         }
 
         //Ejercicio 4b
