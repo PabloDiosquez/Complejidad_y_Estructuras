@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clase_01", "Clase_01\Clase_01.csproj", "{D579F5D4-6A11-4983-A839-0BB3913F1489}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clase_01", "Clase_01\Clase_01.csproj", "{D579F5D4-6A11-4983-A839-0BB3913F1489}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anexo", "Anexo\Anexo.csproj", "{C8CEB8E9-C11D-442E-BACB-F75C28C4D5AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D579F5D4-6A11-4983-A839-0BB3913F1489}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D579F5D4-6A11-4983-A839-0BB3913F1489}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D579F5D4-6A11-4983-A839-0BB3913F1489}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8CEB8E9-C11D-442E-BACB-F75C28C4D5AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8CEB8E9-C11D-442E-BACB-F75C28C4D5AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8CEB8E9-C11D-442E-BACB-F75C28C4D5AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8CEB8E9-C11D-442E-BACB-F75C28C4D5AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

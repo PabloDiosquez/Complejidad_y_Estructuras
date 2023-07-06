@@ -174,18 +174,19 @@ namespace Clase_01
 
         public void recorridoPostOrden()
         {
-            if (!estaVacio() && !esHoja())
-            {
-                foreach (ArbolGeneral<T> hijo in getHijos())
-                {
-                    hijo.recorridoPostOrden();
-                }
-            }
-
             if (!estaVacio())
             {
+                if(!esHoja())
+                {
+                    foreach (ArbolGeneral<T> hijo in getHijos())
+                    {
+                        hijo.recorridoPostOrden();
+                    }
+                }
+
                 Console.Write($"{getDatoRaiz()} ");
             }
+
         }
     }
 }
