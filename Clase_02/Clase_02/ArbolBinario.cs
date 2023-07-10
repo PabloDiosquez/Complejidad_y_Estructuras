@@ -91,52 +91,61 @@ namespace Clase_02
         // El recorrido inicia en la raíz, sigue el subárbol izquierdo y al terminar, sigue el subárbol derecho.
         public void recorridoPreOrden()
         {
-            if (!esVacio()) Console.WriteLine(getDatoRaiz());
+            if (!esVacio())
+            {
+                Console.Write($"{getDatoRaiz()} ");
 
-            if(!getHijoIzquierdo().esVacio()) getHijoIzquierdo().recorridoPreOrden();
+                if(!getHijoIzquierdo().esVacio()) getHijoIzquierdo().recorridoPreOrden();
 
-            if (!getHijoDerecho().esVacio())  getHijoDerecho().recorridoPreOrden();
-        }
-
-        // El recorrido realiza de la siguiente manera: subárbol izquierdo, subárbol derecho, raíz.
-        public void recorridoPostOrden() 
-        {
-            if (!getHijoIzquierdo().esVacio()) getHijoIzquierdo().recorridoPostOrden();
-
-            if (!getHijoDerecho().esVacio())   getHijoDerecho().recorridoPostOrden();
-
-            if (!esVacio()) Console.WriteLine(getDatoRaiz());
+                if (!getHijoDerecho().esVacio())  getHijoDerecho().recorridoPreOrden();
+            } 
         }
 
         // El recorrido se realiza de la siguiente manera: subárbol izquierdo, raíz, subárbol derecho. 
         public void recorridoInOrden()
         {
-            if (!getHijoIzquierdo().esVacio()) getHijoIzquierdo().recorridoInOrden();
+            if (!esVacio())
+            {
+                if (!getHijoIzquierdo().esVacio()) getHijoIzquierdo().recorridoInOrden();
 
-            if (!esVacio()) Console.WriteLine(getDatoRaiz());
+                Console.Write($"{getDatoRaiz()} ");
 
-            if (!getHijoDerecho().esVacio()) getHijoDerecho().recorridoInOrden();
+                if (!getHijoDerecho().esVacio())   getHijoDerecho().recorridoInOrden();
+            }
+        }
+
+        // El recorrido realiza de la siguiente manera: subárbol izquierdo, subárbol derecho, raíz.
+        public void recorridoPostOrden()
+        {
+            if (!esVacio())
+            {
+                if (!getHijoIzquierdo().esVacio()) getHijoIzquierdo().recorridoPostOrden();
+
+                if (!getHijoDerecho().esVacio()) getHijoDerecho().recorridoPostOrden();
+
+                Console.Write($"{getDatoRaiz()} ");
+            }
         }
 
         // El recorrido visita los nodos del árbol por nivel, es decir, primero todos los nodos del nivel 0,
         // luego los nodos del nivel 1 y así sucesivamente.
         public void recorridoPorNiveles()
         {
-            Cola<T> cola = new Cola<T>();
+            Cola<ArbolBinario<T>> cola = new Cola<ArbolBinario<T>>();
 
-            cola.encolar(getDatoRaiz());
+            ArbolBinario<T> desencolado;
 
-            T desencolado;
+            cola.encolar(this);
 
             while (!cola.esVacia())
             {
                 desencolado = cola.desencolar();
 
-                Console.WriteLine(desencolado);
+                Console.WriteLine(desencolado.getDatoRaiz());
 
-                if (!getHijoIzquierdo().esVacio()) cola.encolar(getHijoIzquierdo().getDatoRaiz());
+                if (!desencolado.getHijoIzquierdo().esVacio()) cola.encolar(desencolado.getHijoIzquierdo());
 
-                if (!getHijoDerecho().esVacio())   cola.encolar(getHijoDerecho().getDatoRaiz());
+                if (!desencolado.getHijoDerecho().esVacio())   cola.encolar(desencolado.getHijoDerecho());
             }
         }
     }
