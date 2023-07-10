@@ -91,7 +91,7 @@ namespace Clase_02
         // El recorrido inicia en la raíz, sigue el subárbol izquierdo y al terminar, sigue el subárbol derecho.
         public void recorridoPreOrden()
         {
-            if (getRaiz() is not null) Console.WriteLine(getDatoRaiz());
+            if (!esVacio()) Console.WriteLine(getDatoRaiz());
 
             if(!getHijoIzquierdo().esVacio()) getHijoIzquierdo().recorridoPreOrden();
 
@@ -105,7 +105,7 @@ namespace Clase_02
 
             if (!getHijoDerecho().esVacio())   getHijoDerecho().recorridoPostOrden();
 
-            if (getRaiz() is not null) Console.WriteLine(getDatoRaiz());
+            if (!esVacio()) Console.WriteLine(getDatoRaiz());
         }
 
         // El recorrido se realiza de la siguiente manera: subárbol izquierdo, raíz, subárbol derecho. 
@@ -113,16 +113,31 @@ namespace Clase_02
         {
             if (!getHijoIzquierdo().esVacio()) getHijoIzquierdo().recorridoInOrden();
 
-            if (getRaiz() is not null) Console.WriteLine(getDatoRaiz());
+            if (!esVacio()) Console.WriteLine(getDatoRaiz());
 
             if (!getHijoDerecho().esVacio()) getHijoDerecho().recorridoInOrden();
         }
 
-        // El recorrido visita los nodos árbol por nivel, es decir, primero todos los nodos del nivel 0,
+        // El recorrido visita los nodos del árbol por nivel, es decir, primero todos los nodos del nivel 0,
         // luego los nodos del nivel 1 y así sucesivamente.
         public void recorridoPorNiveles()
         {
+            Cola<T> cola = new Cola<T>();
 
+            cola.encolar(getDatoRaiz());
+
+            T desencolado;
+
+            while (!cola.esVacia())
+            {
+                desencolado = cola.desencolar();
+
+                Console.WriteLine(desencolado);
+
+                if (!getHijoIzquierdo().esVacio()) cola.encolar(getHijoIzquierdo().getDatoRaiz());
+
+                if (!getHijoDerecho().esVacio())   cola.encolar(getHijoDerecho().getDatoRaiz());
+            }
         }
     }
 }
