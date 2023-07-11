@@ -222,11 +222,44 @@ namespace Clase_02
             return hojasAlMomento;
         }
 
+        // Recorrido con separador de niveles 🐣
+
         // Imprime el recorrido por niveles de los elementos del árbol receptor entre los niveles n y m ambos inclusive.
         // Precondición: Debe ser 0 <= n <= m.
         public void entreNiveles(int n, int m)
         {
-            
+            if (!esVacio())
+            {
+                Cola<ArbolBinario<T>> cola = new Cola<ArbolBinario<T>>();
+
+                ArbolBinario<T> desencolado;
+
+                int nivel = 0;
+
+                cola.encolar(this);
+
+                cola.encolar(null); // ➡ Separador de niveles 
+
+                while (!cola.esVacia())
+                {
+                    desencolado = cola.desencolar();
+
+                    if (desencolado is not null)
+                    {
+                        if (nivel >= n && nivel <= m) Console.Write($"{desencolado.getDatoRaiz()} ");
+
+                        if (!desencolado.getHijoIzquierdo().esVacio()) cola.encolar(desencolado.getHijoIzquierdo());
+
+                        if (!desencolado.getHijoDerecho().esVacio()) cola.encolar(desencolado.getHijoDerecho());
+                    }
+                    else 
+                    {
+                        nivel++;
+
+                        if(!cola.esVacia()) cola.encolar(null);
+                    }
+                }
+            }
         }
     }
 }
