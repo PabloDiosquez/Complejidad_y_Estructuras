@@ -155,42 +155,39 @@ namespace Clase_02
         // Agrega un elemento al árbol binario.
         public void agregar(T dato) 
         {
-            Cola<ArbolBinario<T>> cola = new Cola<ArbolBinario<T>>();
-
-            ArbolBinario<T> desencolado;
-
-            cola.encolar(this);
-
-            while (!cola.esVacia())
+            if (!esVacio())
             {
-                desencolado = cola.desencolar();
+                Cola<ArbolBinario<T>> cola = new Cola<ArbolBinario<T>>();
 
-                if (agregarHijo(desencolado, dato)) break;
+                ArbolBinario<T> desencolado;
 
-                else
+                cola.encolar(this);
+
+                while (true)
                 {
-                    if (!desencolado.getHijoIzquierdo().esVacio()) cola.encolar(desencolado.getHijoIzquierdo());
+                    desencolado = cola.desencolar();
 
-                    if (!desencolado.getHijoDerecho().esVacio()) cola.encolar(desencolado.getHijoDerecho());
+                    if (agregarHijo(desencolado, dato)) break;
+
+                    else
+                    {
+                        if (!desencolado.getHijoIzquierdo().esVacio()) cola.encolar(desencolado.getHijoIzquierdo());
+
+                        if (!desencolado.getHijoDerecho().esVacio()) cola.encolar(desencolado.getHijoDerecho());
+                    }
+
                 }
-                
             }
         }
 
+        // Indica si se puede agregar un hijo en el árbol receptor. En ese caso, agrega un hijo con el dato dado.
         private bool agregarHijo(ArbolBinario<T> arbol , T dato)
         {
-            if (arbol.getHijoIzquierdo().esVacio())
-            {
-                arbol.setHijoIzquierdo(new ArbolBinario<T>(dato));
-                return true;
-            }
-            else if (arbol.getHijoDerecho().esVacio())
-            {
-                arbol.setHijoDerecho(new ArbolBinario<T>(dato));
-                return true;
-            }
+            if (arbol.getHijoIzquierdo().esVacio()) arbol.setHijoIzquierdo(new ArbolBinario<T>(dato));
 
-            return false;
+            else if (arbol.getHijoDerecho().esVacio())  arbol.setHijoDerecho(new ArbolBinario<T>(dato));
+            
+            return arbol.getHijoIzquierdo().esVacio() || arbol.getHijoDerecho().esVacio();
         }
 
         // Indica si el elemento dado está en el árbol.
@@ -223,6 +220,13 @@ namespace Clase_02
                 if (!desencolado.getHijoDerecho().esVacio()) cola.encolar(desencolado.getHijoDerecho());
             }
             return hojasAlMomento;
+        }
+
+        // Imprime el recorrido por niveles de los elementos del árbol receptor entre los niveles n y m ambos inclusive.
+        // Precondición: Debe ser 0 <= n <= m.
+        public void entreNiveles(int n, int m)
+        {
+            
         }
     }
 }
