@@ -37,6 +37,9 @@ namespace Clase_02
             //Console.WriteLine("\nRecorrido por niveles:");
             //arbol_A.recorridoPorNiveles();
 
+            Console.WriteLine("\nRecorrido entre niveles:");
+            arbol_A.entreNiveles(1,2);
+
         }
     }
 }

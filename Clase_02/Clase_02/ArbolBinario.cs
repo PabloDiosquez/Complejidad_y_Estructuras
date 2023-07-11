@@ -183,11 +183,23 @@ namespace Clase_02
         // Indica si se puede agregar un hijo en el árbol receptor. En ese caso, agrega un hijo con el dato dado.
         private bool agregarHijo(ArbolBinario<T> arbol , T dato)
         {
-            if (arbol.getHijoIzquierdo().esVacio()) arbol.setHijoIzquierdo(new ArbolBinario<T>(dato));
+            bool hijoAgregado = false;
 
-            else if (arbol.getHijoDerecho().esVacio())  arbol.setHijoDerecho(new ArbolBinario<T>(dato));
-            
-            return arbol.getHijoIzquierdo().esVacio() || arbol.getHijoDerecho().esVacio();
+            if (arbol.getHijoIzquierdo().esVacio())
+            {
+                arbol.setHijoIzquierdo(new ArbolBinario<T>(dato));
+
+                hijoAgregado = true;
+            }
+
+            else if (arbol.getHijoDerecho().esVacio())
+            {
+                arbol.setHijoDerecho(new ArbolBinario<T>(dato));
+
+                hijoAgregado = true;
+            }
+
+            return hijoAgregado;
         }
 
         // Indica si el elemento dado está en el árbol.
@@ -225,7 +237,7 @@ namespace Clase_02
         // Recorrido con separador de niveles 🐣
 
         // Imprime el recorrido por niveles de los elementos del árbol receptor entre los niveles n y m ambos inclusive.
-        // Precondición: Debe ser 0 <= n <= m.
+        // Precondición: Debe ser 0 <= n <= m <= altura del árbol.
         public void entreNiveles(int n, int m)
         {
             if (!esVacio())
@@ -247,6 +259,8 @@ namespace Clase_02
                     if (desencolado is not null)
                     {
                         if (nivel >= n && nivel <= m) Console.Write($"{desencolado.getDatoRaiz()} ");
+
+                        if (nivel > m) break;
 
                         if (!desencolado.getHijoIzquierdo().esVacio()) cola.encolar(desencolado.getHijoIzquierdo());
 

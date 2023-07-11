@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Heap_Binaria
+namespace Clase_02BIS
 {
     public class Program
     {
