@@ -131,6 +131,46 @@ namespace Clase_02
         // luego los nodos del nivel 1 y así sucesivamente.
         public void recorridoPorNiveles()
         {
+            if (!esVacio())
+            {
+                Cola<ArbolBinario<T>> cola = new Cola<ArbolBinario<T>>();
+
+                ArbolBinario<T> desencolado;
+
+                cola.encolar(this);
+
+                while (!cola.esVacia())
+                {
+                    desencolado = cola.desencolar();
+
+                    Console.Write($"{desencolado.getDatoRaiz()} ");
+
+                    if (!desencolado.getHijoIzquierdo().esVacio()) cola.encolar(desencolado.getHijoIzquierdo());
+
+                    if (!desencolado.getHijoDerecho().esVacio()) cola.encolar(desencolado.getHijoDerecho());
+                }
+            }
+        }
+
+        // Agrega un elemento al árbol binario.
+        public void agregar(T dato) 
+        {
+            
+        }
+
+        // Indica si el elemento dado está en el árbol.
+        public bool incluye(T dato) 
+        {
+            
+
+            return false;
+        }
+
+        // Describe la cantidad de hojas que tiene el árbol que recibe el mensaje.
+        public int contarHojas()
+        {
+            int hojasAlMomento = 0;
+
             Cola<ArbolBinario<T>> cola = new Cola<ArbolBinario<T>>();
 
             ArbolBinario<T> desencolado;
@@ -141,12 +181,13 @@ namespace Clase_02
             {
                 desencolado = cola.desencolar();
 
-                Console.WriteLine(desencolado.getDatoRaiz());
+                if(desencolado.esHoja()) hojasAlMomento++;
 
-                if (!desencolado.getHijoIzquierdo().esVacio()) cola.encolar(desencolado.getHijoIzquierdo());
+                if(!desencolado.getHijoIzquierdo().esVacio()) cola.encolar(desencolado.getHijoIzquierdo());
 
-                if (!desencolado.getHijoDerecho().esVacio())   cola.encolar(desencolado.getHijoDerecho());
+                if (!desencolado.getHijoDerecho().esVacio()) cola.encolar(desencolado.getHijoDerecho());
             }
+            return hojasAlMomento;
         }
     }
 }

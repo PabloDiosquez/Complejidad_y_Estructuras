@@ -18,9 +18,15 @@ namespace Clase_02
             arbol_A.setHijoIzquierdo(hijoIzquierdo);
             arbol_A.setHijoDerecho(hijoDerecho);
 
+            arbol_A.agregar(-1);
+
             // Recorridos 🥨
-            //Console.WriteLine("Recorrido PreOrden:");
-            //arbol_A.recorridoPreOrden();
+            Console.WriteLine("Recorrido PreOrden:");
+            arbol_A.recorridoPreOrden();
+
+            //Console.WriteLine();
+            //Console.ForegroundColor = ConsoleColor.Red;
+            //Console.WriteLine(arbol_A.contarHojas());
 
             //Console.WriteLine("\nRecorrido InOrden:");
             //arbol_A.recorridoInOrden();
@@ -28,8 +34,8 @@ namespace Clase_02
             //Console.WriteLine("\nRecorrido PostOrden:");
             //arbol_A.recorridoPostOrden();
 
-            Console.WriteLine("Recorrido por niveles:");
-            arbol_A.recorridoPorNiveles();
+            //Console.WriteLine("\nRecorrido por niveles:");
+            //arbol_A.recorridoPorNiveles();
 
         }
     }
