@@ -19,7 +19,7 @@ for (let i = 0; i < letters.length; i++) {
 }
 
 if (word === rword){
-    console.log(word + " is a paplidrome");
+    console.log(word + " is a palindrome");
 }
 else{
     console.log(word + " is not a palindrome");

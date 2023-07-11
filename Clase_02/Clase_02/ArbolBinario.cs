@@ -155,7 +155,42 @@ namespace Clase_02
         // Agrega un elemento al árbol binario.
         public void agregar(T dato) 
         {
-            
+            Cola<ArbolBinario<T>> cola = new Cola<ArbolBinario<T>>();
+
+            ArbolBinario<T> desencolado;
+
+            cola.encolar(this);
+
+            while (!cola.esVacia())
+            {
+                desencolado = cola.desencolar();
+
+                if (agregarHijo(desencolado, dato)) break;
+
+                else
+                {
+                    if (!desencolado.getHijoIzquierdo().esVacio()) cola.encolar(desencolado.getHijoIzquierdo());
+
+                    if (!desencolado.getHijoDerecho().esVacio()) cola.encolar(desencolado.getHijoDerecho());
+                }
+                
+            }
+        }
+
+        private bool agregarHijo(ArbolBinario<T> arbol , T dato)
+        {
+            if (arbol.getHijoIzquierdo().esVacio())
+            {
+                arbol.setHijoIzquierdo(new ArbolBinario<T>(dato));
+                return true;
+            }
+            else if (arbol.getHijoDerecho().esVacio())
+            {
+                arbol.setHijoDerecho(new ArbolBinario<T>(dato));
+                return true;
+            }
+
+            return false;
         }
 
         // Indica si el elemento dado está en el árbol.
